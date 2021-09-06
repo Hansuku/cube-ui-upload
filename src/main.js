@@ -1,8 +1,14 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Upload from './package/upload.vue'
+import UploadBtn from './package/btn.vue'
+import UploadFile from './package/file.vue'
 
-Vue.config.productionTip = false
+Upload.install = function (Vue) {
+  Vue.component(Upload.name, Upload)
+  Vue.component(UploadBtn.name, UploadBtn)
+  Vue.component(UploadFile.name, UploadFile)
+}
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+Upload.Btn = UploadBtn
+Upload.File = UploadFile
+
+export default Upload
