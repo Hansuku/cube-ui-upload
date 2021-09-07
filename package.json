@@ -4,16 +4,15 @@
   "description": "cube-ui@1.12.46 的上传组件（Upload）修改版，能够传入 httpRequest 覆盖默认上传行为。",
   "main": "lib/cube-ui-upload.umd.js",
   "private": false,
+  "author": "Hansuku",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "lib": "vue-cli-service build --target lib --name cube-ui-upload --dest lib src/main.js"
   },
-  "dependencies": {
-    "core-js": "^3.8.3"
-  },
   "devDependencies": {
+    "core-js": "^3.8.3",
     "vue": "2.5.13",
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
@@ -25,5 +24,13 @@
     "stylus": "^0.54.8",
     "stylus-loader": "^5.0.0",
     "vue-template-compiler": "2.5.13"
-  }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Hansuku/cube-ui-upload.git"
+  },
+  "license": "Apache"
 }

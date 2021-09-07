@@ -1,7 +1,6 @@
 <template>
   <div class="cube-upload">
     <slot>
-      123
       <div class="cube-upload-def clear-fix">
         <upload-file v-for="(file, i) in files" :file="file" :key="i" @click="fileClick(file, i)"></upload-file>
         <upload-btn :multiple="multiple" :accept="accept" v-show="isShowBtn"></upload-btn>
@@ -119,7 +118,7 @@
         }, () => {
           // waiting ui
           this.$nextTick(() => {
-            this.upload()
+            !this.httpRequest && this.upload()
           })
         })
       },
@@ -149,12 +148,11 @@
           const status = file.status
           if (status === STATUS_READY || (retry && status === STATUS_ERROR && file._retryId !== this.retryId)) {
             if (this.httpRequest) {
-              this.httpRequest(file, options).final(file => {
+              this.httpRequest(file, options).then(file => {
                 if (status === STATUS_ERROR) {
                   file._retryId = this.retryId
                 }
                 this.$emit(file.status === STATUS_SUCCESS ? EVENT_SUCCESS : EVENT_ERROR, file)
-                this.upload(retry)
               })
             } else {
               ajaxUpload(file, options, (file) => {
@@ -182,7 +180,7 @@
           if (file.status === STATUS_UPLOADING) {
             file._xhr.abort()
             file.status = STATUS_READY
-          }
+          } 
         })
       },
       retry() {
