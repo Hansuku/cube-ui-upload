@@ -1,6 +1,6 @@
 {
   "name": "cube-ui-upload",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "cube-ui@1.12.46 的上传组件（Upload）修改版，能够传入 httpRequest 覆盖默认上传行为。",
   "main": "lib/cube-ui-upload.umd.js",
   "private": false,

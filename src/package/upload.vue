@@ -148,6 +148,7 @@
           const status = file.status
           if (status === STATUS_READY || (retry && status === STATUS_ERROR && file._retryId !== this.retryId)) {
             if (this.httpRequest) {
+              file.status = STATUS_UPLOADING
               this.httpRequest(file, options).then(file => {
                 if (status === STATUS_ERROR) {
                   file._retryId = this.retryId
