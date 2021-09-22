@@ -45,7 +45,7 @@ new Vue({
 ```
 `:httpRequest`接收一个 `promise` 回调，在你自己的上传逻辑处理完了以后 resolve 他即可。
 ```
-uploadRequestMinio (file) {
+customUploadReq (file) {
   return new Promise((resolve, reject) => {
     fetch(res.url, {
       method: 'PUT',
