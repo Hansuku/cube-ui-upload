@@ -26,6 +26,33 @@ new Vue({
 })
 ```
 ### 使用
+如果代码里之前写了`cube-upload`标签，基本不用修改，只需要添加一个`:httpRequest`属性即可
 ```
-
+<cube-upload
+  v-model="files"
+  :action="action"
+  :max="max"
+  :simultaneousUploads="9"
+  :auto="false"
+  :httpRequest="customUploadReq"
+  @files-added="filesAdded"
+  @file-submitted="fileSubmitted"
+  @file-removed="fileRemoved"
+  @file-success="fileSuccess"
+  @file-error="fileError"
+  @file-click="fileClick"
+></cube-upload>
+```
+`:httpRequest`接收一个 `promise` 回调，在你自己的上传逻辑处理完了以后 resolve 他即可。
+```
+uploadRequestMinio (file) {
+  return new Promise((resolve, reject) => {
+    fetch(res.url, {
+      method: 'PUT',
+      body: file.file
+    }).then(_ => {
+      resolve(file)
+    })
+  })
+}
 ```
